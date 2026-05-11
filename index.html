@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Layanan Digital | SDN Keleng 02</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --bg-color: #f8f9fa;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .nav-menu {
+            display: grid;
+            gap: 15px;
+        }
+
+        .nav-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: #ffffff;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
+        }
+
+        .nav-info {
+            text-align: left;
+        }
+
+        .nav-title {
+            display: block;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .nav-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .nav-icon {
+            background: #e7f1ff;
+            color: var(--secondary-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 400px) {
+            .container {
+                padding: 25px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Portal Layanan Digital</h1>
+            <p>SDN Keleng 02</p>
+        </div>
+
+        <div class="nav-menu">
+            <!-- Navigasi 1: DAPODIK -->
+            <a href="https://dapodik.appzain.my.id" class="nav-card">
+                <div class="nav-info">
+                    <span class="nav-title">DAPODIK SEKOLAH</span>
+                    <span class="nav-subtitle">Manajemen Data Pokok Pendidikan</span>
+                </div>
+                <div class="nav-icon">📊</div>
+            </a>
+
+            <!-- Navigasi 2: E-RAPOR -->
+            <a href="https://erapor.appzain.my.id" class="nav-card">
+                <div class="nav-info">
+                    <span class="nav-title">E-RAPOR SD</span>
+                    <span class="nav-subtitle">Sistem Penilaian Hasil Belajar</span>
+                </div>
+                <div class="nav-icon">📝</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 SDN Keleng 02. Developed by Zainul.
+        </div>
+    </div>
+
+</body>
+</html>
