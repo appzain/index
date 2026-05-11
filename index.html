@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Layanan Digital | SDN Keleng 02</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Poppins untuk Heading, Inter untuk Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #007bff;
-            --bg-color: #f8f9fa;
-            --text-dark: #212529;
-            --text-light: #6c757d;
+            /* Color Palette */
+            --navy-dark: #0f172a;
+            --navy-main: #1e3a8a;
+            --navy-light: #1e40af;
+            --orange-main: #f97316;
+            --orange-hover: #ea580c;
+            --orange-light: #fff7ed;
+            
+            --bg-body: #f1f5f9;
+            --card-bg: #ffffff;
+            
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --text-white: #ffffff;
         }
 
         * {
@@ -23,141 +32,328 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-body);
             color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            text-align: center;
+        /* --- Header / Navbar --- */
+        .navbar {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .header {
-            margin-bottom: 35px;
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1rem;
-            color: var(--text-light);
-        }
-
-        .nav-menu {
-            display: grid;
-            gap: 15px;
-        }
-
-        .nav-card {
+        .brand {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background: #ffffff;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
+            gap: 12px;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .nav-card:hover {
-            border-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
-        }
-
-        .nav-info {
-            text-align: left;
-        }
-
-        .nav-title {
-            display: block;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-
-        .nav-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .nav-icon {
-            background: #e7f1ff;
-            color: var(--secondary-color);
+        .brand-icon {
+            background: var(--navy-main);
+            color: var(--text-white);
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1.2rem;
         }
 
+        .brand-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-main) 100%);
+            padding: 80px 20px 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--orange-main);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Main Content & Cards --- */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: -60px auto 40px; /* Pull up to overlap hero */
+            padding: 0 20px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--orange-main);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.1);
+            border-color: transparent;
+        }
+
+        .nav-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .nav-icon {
+            background: var(--orange-light);
+            color: var(--orange-main);
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover .nav-icon {
+            background: var(--orange-main);
+            color: var(--text-white);
+        }
+
+        .nav-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--navy-dark);
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .nav-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .arrow-icon {
+            margin-left: auto;
+            color: #cbd5e1;
+            align-self: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-card:hover .arrow-icon {
+            transform: translateX(5px);
+            color: var(--orange-main);
+        }
+
+        /* --- Footer --- */
         .footer {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
+            border-top: 1px solid #e2e8f0;
+            margin-top: auto;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 400px) {
-            .container {
-                padding: 25px;
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer span {
+            color: var(--orange-main);
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 100px;
             }
-            .header h1 {
-                font-size: 1.5rem;
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .main-content {
+                margin-top: -50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .nav-card {
+                padding: 20px 15px;
+                gap: 15px;
+            }
+            .nav-icon {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+            }
+            .nav-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+            .nav-title {
+                font-size: 1.1rem;
+            }
+            .brand-text h2 {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <h1>Portal Layanan Digital</h1>
-            <p>SDN Keleng 02</p>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <div class="brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                </div>
+                <div class="brand-text">
+                    <h2>SDN Keleng 02</h2>
+                    <p>Cerdas, Berkarakter, Berprestasi</p>
+                </div>
+            </a>
         </div>
+    </header>
 
-        <div class="nav-menu">
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Portal Layanan Digital</h1>
+        <p>Akses cepat ke sistem informasi dan manajemen data pokok pendidikan terpadu.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="card-grid">
+            
             <!-- Navigasi 1: DAPODIK -->
             <a href="https://dapodik.appzain.my.id" class="nav-card">
-                <div class="nav-info">
-                    <span class="nav-title">DAPODIK SEKOLAH</span>
-                    <span class="nav-subtitle">Manajemen Data Pokok Pendidikan</span>
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                 </div>
-                <div class="nav-icon">📊</div>
+                <div class="nav-info">
+                    <span class="nav-title">Dapodik Sekolah</span>
+                    <span class="nav-subtitle">Sistem pendataan skala nasional untuk manajemen data pokok pendidikan.</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
 
             <!-- Navigasi 2: E-RAPOR -->
             <a href="https://erapor.appzain.my.id" class="nav-card">
-                <div class="nav-info">
-                    <span class="nav-title">E-RAPOR SD</span>
-                    <span class="nav-subtitle">Sistem Penilaian Hasil Belajar</span>
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </div>
-                <div class="nav-icon">📝</div>
+                <div class="nav-info">
+                    <span class="nav-title">E-Rapor SD</span>
+                    <span class="nav-subtitle">Aplikasi pelaporan capaian dan penilaian hasil belajar peserta didik.</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
             </a>
-        </div>
 
-        <div class="footer">
-            &copy; 2026 SDN Keleng 02. Developed by Zainul.
         </div>
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 SDN Keleng 02. Developed by <span>Zainul</span>.</p>
+    </footer>
 
 </body>
 </html>
